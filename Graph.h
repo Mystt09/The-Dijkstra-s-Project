@@ -7,6 +7,14 @@ private:
     int numEdges;
     int** adjMatrix;
 
+public:
+    Graph(int vert);
+    ~Graph();
+    void addEdge(int u, int v);
+    void printAdjMatrix();
+    void printOddDegreeVert();
+};
 
+#endif
 
 }
