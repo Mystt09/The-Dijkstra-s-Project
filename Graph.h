@@ -3,7 +3,7 @@
 
 class Graph {
 private:
-    int numVertices;
+    int numVert;
     int numEdges;
     int** adjMatrix;
 
