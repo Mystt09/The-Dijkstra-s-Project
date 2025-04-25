@@ -13,3 +13,9 @@ Graph::Graph(int vert) {
     }
     }
 }
+Graph::~Graph() {
+    for (int i = 0; i < numVert; i++) {
+        delete[] adjMatrix[i];
+    }
+    delete[] adjMatrix;
+}
