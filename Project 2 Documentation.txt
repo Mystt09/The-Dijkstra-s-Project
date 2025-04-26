@@ -1,0 +1,317 @@
+Project 2 Documentation
+
+
+
+Adding the files to general 
+
+In command prompt enter: 
+
+scp C:\Users\rjuli\Downloads\template_code.zip jreye115@general.asu.edu:~
+
+It will add the file to asu general server 
+
+Once it is added, you can ssh into general in the terminal, or go into vs code bash terminal to unzip the file with:
+
+ unzip template_code.zip
+
+Once you see this then you should be able to see the files in vs code general:
+
+bash-5.2$ unzip template_code.zip
+Archive:  template_code.zip
+   creating: template_code/
+  inflating: __MACOSX/._template_code  
+  inflating: template_code/Vertex.h  
+
+etc …
+.
+.
+.
+.
+
+
+The process can be repeated for adding the test cases 
+
+In command prompt:
+
+scp C:\Users\rjuli\Downloads\test_cases-2.zip jreye115@general.asu.edu:~
+
+In vs code or ssh from command prompt:
+
+unzip test_cases-2.zip
+
+
+
+Adding files to github 
+
+Log into the asu general server in vs code or in terminal 
+
+In terminal, put in the github key with: 
+
+git clone https://github.com/Mystt09/The-Dijkstra-s-Project.git
+
+This will create a new folder in vs code 
+
+You can cd into it in vs code or in terminal with:
+
+cd dijkstra-project
+
+Or you can click it when you see it on vs code 
+
+Committing changes to github
+
+
+
+
+git config --global user.name "Mystt09"
+git config --global user.email "julier10028@gmail.com"
+
+Input: 
+
+bash-5.2$ git config --global user.name "Mystt09"
+git config --global user.email "julier10028@gmail.com"
+
+Output: 
+
+bash-5.2$ git config --list
+user.name=Mystt09
+user.email=julier10028@gmail.com
+bash-5.2$ 
+
+
+Go into source control 
+Stage the changes you would want to commit 
+
+Staging means you could pick which changes you want to be transferred. This can be good if you are still working on it and it is messy. 
+
+Once the stages have been picked, commit the changes 
+
+Terminal: 
+
+Always commit changes you want transferred. 
+
+Commit to your branch 
+
+We will have three branches, main, Julie, and Shukri.
+
+Pushing the commit to the Julie branch
+
+
+Terminal: 
+
+git status              # See what's changed
+git add .               # Stage all changes
+git commit -m "Your commit message here"
+git push origin your-branch-name
+
+git status             
+git add .               
+git commit -m "This is where Julie’s code for the odd vertices and algorithm will go"
+git push origin Julie
+
+This did not work, ^
+
+Use this : 
+
+git status
+git checkout Julie       # Switch to Julie branch
+git merge main           # Merge main into Julie
+git push origin Julie    # Push changes to GitHub
+
+git status
+git checkout Julie       
+git merge main          
+git push origin Julie    
+
+
+
+
+
+
+In VS code: 
+
+Go into source control 
+In the three dots next to changes, click check out to…
+Pick the Julie branch in the search bar
+From the same three dots: branch>merge 
+Click the main branch from the search bar, to merge the main branch with the Julie branch 
+
+
+Errors
+
+
+bash-5.2$ git branch 
+fatal: not a git repository (or any parent up to mount point /)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+bash-5.2$ 
+
+Solution: 
+
+Had to cd into the project file 
+
+
+Main.cpp:95:19: error: request for member ‘getDegree’ in ‘vertices’, which is of non-class type ‘Vertex [numOfVertices]’
+   95 |     if ((vertices.getDegree() % 2) != 0)
+
+Solution: 
+
+Had to do vertices[i] to access the degree in position i 
+
+
+
+Merging specific files
+
+git checkout feature-branch              # Make sure you're on your target branch
+git checkout main -- path/to/file.txt    # Pull specific file from main into current branch
+
+Multiple files
+
+Make sure to cd into project folder
+
+git checkout main -- file1.txt dir/file2.js
+
+Then commit
+
+git add .
+git commit -m "Pulled specific files from main"
+
+Apply: 
+
+
+
+git checkout main
+ls -R | grep -i graph #with i meaning case sensitive 
+
+
+
+*use the output of ls -R | grep -i graph this as your graph path for git checkout main-- graph path 
+
+git checkout Julie
+git checkout main -- Graph.cpp dir/Graph.h
+
+git add .
+git commit -m "Pulled Graph.cpp and Graph files from main"
+
+
+Make sure to cd into project folder
+
+
+cd The-Dijkstra-s-Project
+
+cd /afs/asu.edu/users/j/r/e/jreye115/The-Dijkstra-s-Project 
+
+Run the project with the test case: 
+
+
+./dijkstra < small-network.txt
+
+
+Debugger troubles
+
+Make a launch json file 
+
+Change the following lines 
+
+ "program": "enter program name, for example ${workspaceFolder}/a.out", 
+ 
+To 
+
+"program": "${workspaceFolder}/dijkstra",
+
+
+Makes sure it says this for cwd
+ "cwd": "${workspaceFolder}",
+"externalConsole": true,
+
+Set to true to be able to read input from txt files 
+
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(gdb) Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/./dijkstra",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": true,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ]
+        }
+
+
+    ]
+}
+
+Make sure you are in your project folder, and not in the jreye115 folder 
+Code
+
+Odd vertices 
+
+Got this output 
+
+Odd Vertices: 
+
+0 
+0 
+0 
+0 
+4096 
+0 
+1856813816 
+32546 
+1858478976 
+32546 
+
+It’s not reading the numbers correctly… 
+
+Code: 
+
+cout << "Odd Vertices: ";
+   
+for (int i = 0; i < 10; i++){
+
+
+    cout << oddVertices[i] << " ";
+
+
+ cout << endl;
+
+
+}
+
+
+
+Had the number 10 instead of i 
+
+It is printing normal numbers now 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
