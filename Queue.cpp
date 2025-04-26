@@ -18,14 +18,11 @@ void enqueue(int vertex)
 {
    
     // if queue is empty, set front to 0
-    if (isEmpty()) {
+    if (isEmpty()) 
 
         head = 0;
 
         tail++;
-    
-    }
-
 
     arrQue[tail] = vertex;
     
@@ -49,11 +46,11 @@ int dequeue()
         head++;
 
         // if queue becomes empty, reset both pointers
-        if (isEmpty()) {
+        if (isEmpty()) 
 
             head = tail = -1;
 
-    }
+    
 
         return deqVal;
 
