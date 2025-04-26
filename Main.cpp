@@ -153,9 +153,9 @@ for (int i = 0; i < oddCount; i++) {
 
     Queue shortestPath;
 
-    shortestPath.bfs(oddVertice-1, numOfVertices, matrix, dist);
+    shortestPath.bfs(oddVertice -1, numOfVertices, matrix, dist);
 
-    cout << "Single source shortest path lengths from node " << (i + 1) << endl;
+    cout << "Single source shortest path lengths from node " << oddVertices[i] << endl;
 
 
     //print the paths from node i 
