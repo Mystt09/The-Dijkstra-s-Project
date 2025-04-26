@@ -1,0 +1,62 @@
+Project 2 Report
+
+Source: 
+
+c++ - How do I manually enter in a Matrix of data? - Stack Overflow
+Pointer to an Array in C++ | GeeksforGeeks
+
+C++ Arrays | GeeksforGeeks
+How to Print an Array in C++? | GeeksforGeeks
+https://www.geeksforgeeks.org/cpp-program-to-implement-queue-using-array/ 
+
+* ask chatGPT to explain C++ concepts and how to implement them 
+
+Errors: 
+
+Main.cpp:39:25: error: expected ‘}’ before ‘{’ token
+   39 |                         {1, 1, 1, 0, 0, 0, 0, 0},
+      |                         ^
+
+It is not recognizing that i do have a { in the beginning.. 
+
+
+Refreshed terminal, it started to work somehow 
+
+
+Main.cpp:74:5: error: ‘cout’ was not declared in this scope; did you mean ‘std::cout’?
+   74 |     cout << "Odd Vertices: ";
+      |     ^~~~
+      |     std::cout
+
+* Don’t forget to include the namespace std; 
+
+Vertex.cpp:9:18: error: ‘class Vertex’ has no member named ‘Index’; did you mean ‘index’?
+    9 |     return this->Index;
+      |                  ^~~~~
+      |                  index
+
+Solution: change this->Index to lower case i for Index 
+
+Forgot how to run the code so went to chat gpt 
+
+From chatGPT: 
+
+It did not print anything because it was waiting for input - chatGPT
+
+
+Run the project with the test case: 
+
+./dijkstra < small-network.txt
+
+
+
+
+
+
+
+
+
+
+
+
+
