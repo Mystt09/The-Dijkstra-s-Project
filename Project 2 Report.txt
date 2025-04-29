@@ -1,6 +1,9 @@
 Project 2 Report
 
-Source: 
+Julie Reyes
+Shukri Muhidin
+
+Sources: 
 
 c++ - How do I manually enter in a Matrix of data? - Stack Overflow
 Pointer to an Array in C++ | GeeksforGeeks
@@ -9,26 +12,13 @@ C++ Arrays | GeeksforGeeks
 How to Print an Array in C++? | GeeksforGeeks
 https://www.geeksforgeeks.org/cpp-program-to-implement-queue-using-array/ 
 
-* ask chatGPT to explain C++ concepts and how to implement them 
+* asked chatGPT to explain C++ concepts and how to implement them 
 
-Errors: 
+There was trouble implementing dijkstras with knowing how it is able to know the shortest path between two vertices. At first, it was counting each edge that was connected to the same vertice. This did not follow the correct algorithm implementation as it will only continue to the edge with the shortest amount of distance. Then it was found out that for an unweighted graph, dijkstras can be implemented with BFS. This made it more simple to understand. 
 
-Main.cpp:39:25: error: expected ‘}’ before ‘{’ token
-   39 |                         {1, 1, 1, 0, 0, 0, 0, 0},
-      |                         ^
+Bug: 
 
-It is not recognizing that i do have a { in the beginning.. 
-
-
-Refreshed terminal, it started to work somehow 
-
-
-Main.cpp:74:5: error: ‘cout’ was not declared in this scope; did you mean ‘std::cout’?
-   74 |     cout << "Odd Vertices: ";
-      |     ^~~~
-      |     std::cout
-
-* Don’t forget to include the namespace std; 
+There was a typo in the Vertex class 
 
 Vertex.cpp:9:18: error: ‘class Vertex’ has no member named ‘Index’; did you mean ‘index’?
     9 |     return this->Index;
@@ -36,19 +26,10 @@ Vertex.cpp:9:18: error: ‘class Vertex’ has no member named ‘Index’; did 
       |                  index
 
 Solution: change this->Index to lower case i for Index 
+ 
+Design Decisions: 
 
-Forgot how to run the code so went to chat gpt 
-
-From chatGPT: 
-
-It did not print anything because it was waiting for input - chatGPT
-
-
-Run the project with the test case: 
-
-./dijkstra < small-network.txt
-
-
+A graph class was created to keep track of the adjacency matrix. Then that was used to determine the odd vertices and the shortest path. Dijkstras was implemented with a queue class. It would enqueue the start node, then mark it as visited and set the distance to 0. It would then dequeue that value to check all of its edges. If that edge has not been visited, then it will set it to visited, set the distance of that node from the start node by adding it with the distance of the dequeued value. It will then enqueue all of the edges of the dequeued value and repeat. 
 
 
 
