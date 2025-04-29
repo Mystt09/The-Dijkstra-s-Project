@@ -1,6 +1,7 @@
 #include "Edge.h"
 #include "Vertex.h"
-#include "Queue.cpp"
+#include "Queue.h"
+#include "Graph.h"
 #include <iostream>
 #include <string>
 using namespace std;
@@ -12,6 +13,9 @@ int main(){
     int numOfVertices;
     int numOfEdges;
 
+    
+  
+  
     if(!std::cin.eof()){
         std::cin >> numOfVertices;
         std::cin >> numOfEdges;
@@ -21,6 +25,8 @@ int main(){
         return NULL;
     }
 
+    Graph myGraph(numOfVertices); //initializes the graph and makes a n x n matrix
+
     while(!std::cin.eof()){
         int startVertice;
         int endVertice;
@@ -29,19 +35,32 @@ int main(){
         Edge* newEdge = new Edge(startVertice, endVertice); // this can be used to populate the adjacency matrix 
         // Here is where you load up the Graph object
 
-
+       myGraph.addEdge(startVertice, endVertice); // adds a new edge to the graph 
     }
+
+
+    cout << "The adjacency matrix of G" << endl;
+
+    myGraph.printAdjMatrix();
+
+ 
+
+   
 
     // And here is where you start working on the three tasks
 
-    //  ********** printing the odd vertices ********************8
+    //  ********** printing the odd vertices ********************
+
     // will get the info from the graph object, to count the number of 1s in each row
     // then print the vertices with an odd amount of 1s
     // for test purposes i will hard code the marix from the instrucions 
 
     // Hard coded matrix for testing 
 
-    const int MAX_V = 8;
+
+
+    const int MAX_V = numOfVertices;
+
     int matrix[MAX_V][MAX_V] = {
 
         {0, 1, 0, 1, 1, 0, 0, 0},  // row 1
@@ -58,7 +77,7 @@ int main(){
     int oddVertices[MAX_V];
     int oddCount = 0;
     
-
+    int** adjMatrix = myGraph.getAdjMatrix();
 
    //int oddVertices[numOfVertices]; // set the size to 0 for now 
 
@@ -68,7 +87,7 @@ int main(){
 
     Vertex vertices[MAX_V];
                       
-
+// adds values for the number of 1s in each vertex, to later check if it is an odd or even count 
 for (int i = 0; i < MAX_V; i++){
 
     int count = 0; // counter that will reset after counting the number of 1s in each row 
@@ -78,7 +97,7 @@ for (int i = 0; i < MAX_V; i++){
 
         
 
-        if (matrix[i][j] == 1) {
+        if (adjMatrix[i][j] == 1) {
 
             count ++; 
         }
@@ -94,11 +113,11 @@ for (int i = 0; i < MAX_V; i++){
    
 }
 
- //print the oddVertices array elements
+ //Adds the indexes from the Vertex array with odd degree vertices into the oddVertices array  
 
-cout << "Odd Vertices: \n";
+cout << "The odd degree vertices in G" << endl;
     
-for (int i = 0; i < numOfVertices; i++){
+for (int i = 0; i < MAX_V; i++){
 
     if ((vertices[i].getDegree() % 2) != 0) {
 
@@ -111,12 +130,16 @@ for (int i = 0; i < numOfVertices; i++){
 }
  
 // print odd vertices array 
+cout << "O = { ";
 
-for (int i = 0; i < oddCount; i++){
+for (int i = 0; i < oddCount; i++) {
 
-    cout << oddVertices[i] << endl; 
+    cout << oddVertices[i];
 
+    if (i != oddCount - 1) cout << " ";
+    
 }
+cout << " }" << endl;
 
 
 
@@ -153,7 +176,7 @@ for (int i = 0; i < oddCount; i++) {
 
     Queue shortestPath;
 
-    shortestPath.bfs(oddVertice -1, numOfVertices, matrix, dist);
+    shortestPath.bfs(oddVertice -1, numOfVertices, adjMatrix, dist);
 
     cout << "Single source shortest path lengths from node " << oddVertices[i] << endl;
 
@@ -166,16 +189,8 @@ for (int i = 0; i < oddCount; i++) {
 
     }
 
-//} // end closing bracket for if statement 
-
-
 
 }
-
-
-
-
-
 
     return 0;
 }
