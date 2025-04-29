@@ -1,3 +1,4 @@
+
 Project 2 Report
 
 Julie Reyes
@@ -30,6 +31,37 @@ Solution: change this->Index to lower case i for Index
 Design Decisions: 
 
 A graph class was created to keep track of the adjacency matrix. Then that was used to determine the odd vertices and the shortest path. Dijkstras was implemented with a queue class. It would enqueue the start node, then mark it as visited and set the distance to 0. It would then dequeue that value to check all of its edges. If that edge has not been visited, then it will set it to visited, set the distance of that node from the start node by adding it with the distance of the dequeued value. It will then enqueue all of the edges of the dequeued value and repeat. 
+
+
+
+
+here is mine (Shukri)
+
+My Part: Adjacency Matrix
+My main job was to work on the adjacency matrix.
+What is an Adjacency Matrix?
+An adjacency matrix is a 2D array that shows how the vertices in a graph are connected. Each row and column represents a vertex. If two vertices are connected by an edge, we put a 1 in the matrix at that spot. If there is no edge between two vertices, we put a 0 there.
+How I Built the Adjacency Matrix
+When the program reads the graph from the input file, it first gets the number of vertices and edges. Then, for every edge it reads, I updated the matrix by setting the correct spots to 1.
+ For example, if there’s an edge between vertex 1 and vertex 2, I set adjMatrix[0][1] = 1 and adjMatrix[1][0] = 1 (because arrays start at 0 in C++).
+Tracking Vertex Degrees
+While filling in the adjacency matrix, I also kept track of the degree of each vertex (how many edges are connected to it). This is important because later we needed to find the vertices that have an odd degree.
+Printing the Matrix
+After building the adjacency matrix, I printed it out. This makes it easy to see how all the vertices are connected, and it helps check that everything was loaded correctly before running Dijkstra’s algorithm
+Problems I Faced
+The hardest part was making sure the matrix was initialized correctly and updated properly with the input data. I also had to be careful not to accidentally add the same edge twice.
+
+Known Issues
+Right now, the adjacency matrix works fine for the project. If we had a really big graph (with thousands of vertices), it could use a lot of memory. But for our assignment, it’s not a problem.
+
+References
+GeeksforGeeks. (n.d.). Graph Representation using Adjacency Matrix. Retrieved from https://www.geeksforgeeks.org/graph-representation-using-adjacency-matrix/
+
+
+Cplusplus.com. (n.d.). Classes and Objects in C++. Retrieved from https://www.cplusplus.com/doc/tutorial/classes/
+
+
+
 
 
 
